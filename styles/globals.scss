@@ -1,0 +1,19 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+html, body{
+    height: 100%;
+}
+.MuiInputBase-input{
+    background-color: theme('colors.input_background');
+    height: 15px;
+}
+
+.search{
+    .MuiInputBase-input{
+        background-color: theme('colors.white') ;
+        height: 30px;
+    }
+}
+
