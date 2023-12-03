@@ -1,9 +1,10 @@
+"use client"
 
 import Image from "next/image"
-
-
 import Logo from "./logo";
 import BlackButton from "./button";
+import SimpleBackdrop from "./backdrop";
+import { useState } from "react";
 
 
 const checkData  = [
@@ -14,13 +15,21 @@ const checkData  = [
 
 
 export default function LandingPage(){
+
+  const [loader, setLoader] = useState(false)
     
     return(
-        <div className="flex h-full">
-           <div className="w-3/5 bg-pink_200 flex justify-center">
+        <div className="md:flex min-h-screen  absolute w-full">
+          <SimpleBackdrop open={loader}/>
+          <div className="md:hidden" >
+             <div >
+             <img  style={{maxHeight: "500px", minWidth:"100%"}} src="/assets/Hero Image.jpg"/>
+             </div>
+           </div>
+           <div className="md:w-3/5 bg-pink_200 flex justify-center">
               <div className="w-4/5 mt-6">
                  <Logo/>
-                  <div className="text-3xl font-bold mt-24">
+                  <div className="text-3xl font-bold md:mt-24 mt-12">
                    Explore the best camps on Earth
                   </div>
                   <div className="text-grey_800 mt-3">
@@ -36,10 +45,13 @@ export default function LandingPage(){
                     )
                   })}
                   <div className="mt-8">
-                  <BlackButton path="/campgrounds" text="View Campgrounds" height="h-16"/>
+                  
+                  <BlackButton path="/campgrounds" text="View Campgrounds" height="h-16" setLoader={setLoader}/>
+                  
+                  
                   </div>
                   <div className="font-medium text-grey_dark mt-10">Partnered with:</div>
-                  <div className="flex ">
+                  <div className="flex flex-wrap">
                      <Image width={100} height={50} src="/assets/Airbnb.svg"/>
                      <Image width={130} height={50} src="/assets/Booking.svg"/>
                      <Image width={130} height={50} src="/assets/plum Guide.svg"/>
@@ -47,8 +59,8 @@ export default function LandingPage(){
               </div>
              
            </div>
-           <div className="w-2/5" >
-             <div style={{ position: 'relative', width: '100%', height: '100vh' }}>
+           <div className="w-2/5 md:block hidden" >
+             <div style={{ position: 'relative', width: '100%', height: '100%' }}>
              <Image layout="fill" src="/assets/Hero Image.jpg"/>
              </div>
            </div>
