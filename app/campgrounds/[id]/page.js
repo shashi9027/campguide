@@ -98,11 +98,11 @@ export default function IndividualCamps() {
                   return (<Comment key={index} data={val} />)
                })}
 
-               <div  className="flex justify-end items-center">
+               <div role="button" onClick={()=> setOpen(true)}  className="flex justify-end items-center">
                   {Cookies.get("name") ? 
                   <button className=" flex bg-black p-2 rounded gap-4 mt-5 ">
                      <Image width={30} height={30} src="/assets/Chat Bubble.svg" />
-                     <div  role="button" onClick={()=> setOpen(true)} className="text-white ">Leave a Review</div>
+                     <div   className="text-white ">Leave a Review</div>
                   </button> : ""}
                   
                </div>
@@ -110,8 +110,8 @@ export default function IndividualCamps() {
 
          </div>
       </div>
-      <Dialog open={open} maxWidth="md" onClose={()=> setOpen(false)}>
-         <div style={{minWidth: "400px"}} className="p-5">
+      <Dialog open={open}  onClose={()=> setOpen(false)}>
+         <div  className="p-5">
          <h1 className="text-xl font-bold">Add New Comment</h1>
          <div className="mt-4 mb-3">Description</div>
          <TextField

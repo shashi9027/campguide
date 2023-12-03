@@ -25,7 +25,7 @@ export default function SignUpFields() {
         if (name.length > 1 && password.length > 1) {
             Cookies.set("name", name);
             router.push("/campgrounds");
-            toast.success("Login Successfully");
+            toast.success("Signup Successfully");
             setError({ ...error, name: "", password: "" })
         }
         else {

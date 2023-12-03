@@ -6,11 +6,13 @@ import SimpleBackdrop from "@/components/backdrop"
 import { useEffect, useState } from "react"
 import { Menu, MenuItem } from "@mui/material"
 import Cookies from "js-cookie"
+import { useRouter } from "next/navigation"
 
 export default function CampgroundLayout({ children }) {
   const [loader, setLoader] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [name, setName] = useState("")
+  const [name, setName] = useState("");
+  const router = useRouter()
   const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
@@ -41,7 +43,7 @@ export default function CampgroundLayout({ children }) {
             <Link onClick={() => setLoader(true)} href="/login">
               <div className="text-grey-700 font-semibold break-words">{name ? name : "Login"}</div>
             </Link>
-            {name ? <button onClick={()=> {Cookies.remove("name"), setName("")}}>Logout</button> : <BlackButton path="/signup" text="Create an account" height="h-12" setLoader={setLoader} />}
+            {name ? <button onClick={()=> {Cookies.remove("name"), setName(""), router.push("/login")}}>Logout</button> : <BlackButton path="/signup" text="Create an account" height="h-12" setLoader={setLoader} />}
           </div>
         </div>
         <div className="md:hidden flex justify-between">
@@ -73,7 +75,7 @@ export default function CampgroundLayout({ children }) {
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link onClick={() => setLoader(true)} href="/signup">
+          <Link onClick={() => setLoader(true)} href="/login">
             <div className="text-grey-700 font-semibold">{name ? <button onClick={()=> {Cookies.remove("name"), setName("")}}>Logout</button> :"Create an account"}</div>
           </Link>
         </MenuItem>

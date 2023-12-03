@@ -54,7 +54,7 @@ export default function LandingPage(){
                   <div className="flex flex-wrap">
                      <Image width={100} height={50} src="/assets/Airbnb.svg"/>
                      <Image width={130} height={50} src="/assets/Booking.svg"/>
-                     <Image width={130} height={50} src="/assets/plum Guide.svg"/>
+                     <Image width={130} height={50} src="/assets/Plum Guide.svg"/>
                   </div>
               </div>
              
